@@ -1,0 +1,64 @@
+.umami .ele-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.umami .rss-list {
+  margin-top: 15px;
+}
+.umami .rss-list li {
+  margin-bottom: 10px;
+  border-radius: 6px;
+  display: block;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.umami .rss-list li.active .el-card, .umami .rss-list li:hover .el-card {
+  background-color: #4e73df;
+  color: #fff;
+}
+.umami .rss-list li.active .el-card .description, .umami .rss-list li:hover .el-card .description {
+  color: rgba(255, 255, 255, 0.5);
+}
+.umami .rss-list li .head {
+  display: flex;
+  justify-content: space-between;
+}
+.umami .rss-list li .description {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.5);
+}
+.umami .rss-list li .name {
+  font-size: 16px;
+}
+.umami .rss-list li .date {
+  font-size: 12px;
+}
+.umami .pagination {
+  margin-top: 20px;
+}
+.umami .log-card {
+  border: 1px solid #eee;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.umami .log-card .log-head {
+  margin-bottom: 15px;
+}
+.umami .log-card .log-head a {
+  font-size: 16px;
+}
+.umami .log-card .date {
+  color: #9d9d9d;
+}
+.umami .card-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,64 @@
+.umami {
+  .ele-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .rss-list {
+    margin-top: 15px;
+    li {
+      margin-bottom: 10px;
+      border-radius: 6px;
+      display: block;
+      text-decoration: none;
+      transition: all .2s;
+      cursor: pointer;
+      &.active .el-card , &:hover .el-card {
+        background-color: #4e73df;
+        color: #fff;
+        .description {
+          color: rgba(255, 255, 255, .5);
+        }
+      }
+      .head {
+        display: flex;
+        justify-content: space-between;
+      }
+      .description {
+        margin-bottom: 10px;
+        margin-top: 10px;
+        font-size: 12px;
+        color: rgba(0, 0, 0, .5);
+      }
+      .name {
+        font-size: 16px;
+      }
+      .date {
+        font-size: 12px;
+      }
+    }
+  }
+  .pagination  {
+    margin-top: 20px;
+  }
+  .log-card {
+    border: 1px solid #eee;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  .log-card .log-head {
+    margin-bottom: 15px;
+  }
+  .log-card .log-head a {
+    font-size: 16px;
+  }
+  .log-card .date {
+    color: #9d9d9d;
+  }
+  .card-title {
+    display: flex;
+    justify-content: space-between;
+  }
+}
