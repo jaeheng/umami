@@ -1,5 +1,5 @@
 # umami
-emlog plugin: umami - A website statistics plugin based on UMAMI API
+emlog plugin: umami - A website statistics plugin based on UMAMI API (self-hosted instance)
 
 ## feature
 
