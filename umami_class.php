@@ -112,8 +112,14 @@ class Umami {
         // Initialize cURL session
         $ch = curl_init($url);
 
+        $headers  = [
+            'Authorization: Bearer ' . $this->getToken(),
+            'Content-Type: application/json'
+        ];
+
         // Set cURL options
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Return the response as a string
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers); // set header
         // You can add more options here if needed
 
         // Execute cURL session and store the response
@@ -128,12 +134,13 @@ class Umami {
         // Close cURL session
         curl_close($ch);
 
-        return $response; // Return the response from the API
+        return json_decode($response, true); // Return the response from the API
     }
 
     private function sendPostRequest($url, $data) {
         // Initialize cURL session
-        $ch = curl_init($url);
+        $domain = $this->getDomain();
+        $ch = curl_init($domain . $url);
 
         $headers  = [
             'Authorization: Bearer ' . $this->getToken(),
@@ -142,7 +149,7 @@ class Umami {
 
         // Set cURL options
         curl_setopt($ch, CURLOPT_POST, 1); // Set the HTTP method to POST
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data)); // Set the POST data
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Return the response as a string
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data)); // Set the POST data
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers); // set header
         // You can add more options here if needed
@@ -159,16 +166,23 @@ class Umami {
         // Close cURL session
         curl_close($ch);
 
-        return json_decode($response); // Return the response from the API
+        return json_decode($response, true); // Return the response from the API
     }
 
     public function login($username, $password) {
         $domain = $this->getDomain();
         if ($domain) {
-            $response = $this->sendPostRequest($domain . '/api/auth/login', ['password' => $password, 'username' => $username]);
-            $this->success('ss', $response);
+            $response = $this->sendPostRequest('/api/auth/login', ['password' => $password, 'username' => $username]);
+            $this->saveToken($response['token']);
+            $this->success('登录成功', $response);
         } else {
             $this->error('请先设置umami实例地址');
         }
+    }
+
+    public function getUserInfo() {
+        $url = '/api/auth/verify';
+
+        return $this->sendPostRequest($url, []);
     }
 }

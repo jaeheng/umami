@@ -8,12 +8,14 @@ if (!class_exists('Umami', false)) {
 Umami::getInstance()->loadStaticPublic();
 $umami_domain = Umami::getInstance()->getDomain();
 $token = Umami::getInstance()->getToken();
+$userInfo = Umami::getInstance()->getUserInfo();
+$username = $userInfo['user']['username'];
 ?>
 <div id="app" class="umami">
     <template v-if="umami_domain">
         <!--已填写实例地址-->
         <?php if($token):?>
-            xxx已登录
+            {{ userInfo.username }}已登录
         <?php else:?>
             <el-button @click="openDialog">登录</el-button>
         <?php endif;?>
@@ -103,6 +105,9 @@ $token = Umami::getInstance()->getToken();
                     umami_domain: [
                         { required: true, message: '请输入umami系统地址: http(s)://test.com', trigger: 'blur' }
                     ]
+                },
+                userInfo: {
+                    username: '<?= $username?>'
                 },
                 userList: [],
                 data: {},
